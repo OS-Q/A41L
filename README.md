@@ -1,21 +1,29 @@
-﻿# [android](https://github.com/OS-Q/android) 
-[![sites](OS-Q/OS-Q.png)](http://www.OS-Q.com)
-#### 归属系统：[OS-Q](https://github.com/OS-Q/OS-Q)
+﻿# [Ubuntu](https://github.com/OS-Q/M12)
 
-## [android简介](https://github.com/OS-Q/android/wiki) 
+[![sites](http://182.61.61.133/link/resources/OSQ.png)](http://www.OS-Q.com)
 
-[android](https://github.com/OS-Q/android)是一种基于Linux的自由及开放源代码的操作系统。主要使用于移动设备，由Google（谷歌）公司和开放手机联盟领导及开发，是统治当前移动端的操作系统。
+### [简介](https://github.com/OS-Q/M12/wiki)
 
-Android 提供了一个统一的应用程序开发方法，这意味着开发人员只需要为 Android 进行开发，这样他们的应用程序就能够运行在不同搭载 Android 的移动设备上。
+[Ubuntu](https://ubuntu.com/)
 
-Android 源代码是根据自由和开放源码软件许可证。谷歌发布的大部分代码遵循 Apache 许可证2.0版，Linux 内核的变化遵循 GNU 通用公共许可证版本2。
+#### [工程拓扑](https://github.com/OS-Q)
 
-[![sites](OS-Q/android.jpg)](http://www.OS-Q.com)
+* Q1：[device](https://github.com/OS-Q/Q1)
+    * M01：[Arduino](https://github.com/OS-Q/M01)
+    * M02：[AMetal](https://github.com/OS-Q/M02)
+    * M03：[micropython](https://github.com/OS-Q/M03)
+* Q2：[client](https://github.com/OS-Q/Q2)
+    * M04：[FreeRTOS](https://github.com/OS-Q/M04)
+    * M05：[RT-Thread](https://github.com/OS-Q/M05)
+    * M06：[Zephyr](https://github.com/OS-Q/M06)
+* Q3：[server](https://github.com/OS-Q/Q3)
+    * M07：[CentOS](https://github.com/OS-Q/M07)
+    * M08：[Raspbian](https://github.com/OS-Q/M08)
+    * M09：[OpenWrt](https://github.com/OS-Q/M09)
+* Q4：[terminal](https://github.com/OS-Q/Q4)
+    * M10：[Android](https://github.com/OS-Q/M10)
+    * M11：[HarmonyOS](https://github.com/OS-Q/M11)
+    * M12：[Ubuntu](https://github.com/OS-Q/M12)
 
-### [相关资源](https://github.com/OS-Q/android)
 
-* [系统编译环境](docs/)
-* [系统烧录工具](https://github.com/OS-Q/PhoenixCard)
-
-### [Q : Operation System for edge devices](http://www.OS-Q.com)
-####  2019-7-6
+### [OS-Q = Open Source & Operating System ](http://www.OS-Q.com)
