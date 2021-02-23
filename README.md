@@ -4,6 +4,6 @@
 
 ### [简介](https://github.com/OS-Q/A41L/wiki)
 
-[A41L](https://github.com/OS-Q/A41L) 适配 [A41](https://github.com/OS-Q/A41)驱动
+[A41L](https://github.com/OS-Q/A41L) 适配 [A41](https://github.com/OS-Q/A41)
 
 ### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)

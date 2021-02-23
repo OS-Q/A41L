@@ -1,6 +1,6 @@
 {
-    "name":"Ubuntu",
-    "type":"terminal",
-    "url":"https://github.com/OS-Q/M12",
-    "version":"1.0.0"
+    "name":"A41L",
+    "type":"Arduino",
+    "url":"https://github.com/OS-Q/A41L",
+    "version":"0.4.1"
 }

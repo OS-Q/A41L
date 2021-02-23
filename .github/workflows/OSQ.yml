@@ -1,4 +1,4 @@
-name: Build
+name: A41L
 
 on:
   pull_request:
@@ -16,36 +16,11 @@ jobs:
       matrix:
         board:
           # Adafruit Boards
-          - 'circuitplayground_nrf52840'
-          - 'clue_nrf52840'
           - 'feather_nrf52832'
           - 'feather_nrf52840_express'
           - 'feather_nrf52840_sense'
-          - 'itsybitsy_nrf52840_express'
-          - 'metro_nrf52840_express'
           # Alphabetical order
-          - 'ADM_B_NRF52840_1'
-          - 'ae_bl652_bo'
-          - 'aramcon_badge_2019'
-          - 'arcade_feather_nrf52840_express'
           - 'arduino_nano_33_ble'
-          - 'bast_ble'
-          - 'bluemicro_nrf52840'
-          - 'electronut_labs_papyr'
-          - 'ikigaisense_vita'
-          - 'mdk_nrf52840_dongle'
-          - 'nice_nano'
-          - 'nrf52840_m2'
-          - 'ohs2020_badge'
-          - 'particle_argon'
-          - 'particle_boron'
-          - 'particle_xenon'
-          - 'pca10056'
-          - 'pca10059'
-          - 'pca10100'
-          - 'pitaya_go'
-          - 'raytac_mdbt50q_rx'
-          - 'waveshare_nrf52840_eval'
 
     steps:
     - name: Setup Python
@@ -53,12 +28,12 @@ jobs:
 
     - name: Setup Node.js
       uses: actions/setup-node@v1
-      
+
     - name: Checkout Code
       uses: actions/checkout@v1
       with:
-        submodules: true      
-        
+        submodules: true
+
     - name: Install Toolchains
       run: |
         pip3 install adafruit-nrfutil uritemplate requests intelhex
@@ -67,12 +42,12 @@ jobs:
         # Skip this version for now, we will try again with next official release from ARM
         xpm install --global @xpack-dev-tools/arm-none-eabi-gcc@9.3.1-1.1.1
         echo `echo $HOME/.local/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/*/.content/bin` >> $GITHUB_PATH
-    
+
     - name: Build
       run: |
         make BOARD=${{ matrix.board }} all
         make BOARD=${{ matrix.board }} copy-artifact
-      
+
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.board }}
@@ -92,7 +67,7 @@ jobs:
         asset_path: ${{ matrix.board }}_bootloader-${{ github.event.release.tag_name }}.zip
         asset_name: ${{ matrix.board }}_bootloader-${{ github.event.release.tag_name }}.zip
         asset_content_type: application/zip
-      
+
     - name: Upload Release Asset for Self-Update
       uses: actions/upload-release-asset@v1
       env:
