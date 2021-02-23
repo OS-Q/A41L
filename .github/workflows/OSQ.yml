@@ -1,4 +1,4 @@
-name: A41L
+name: Bootloader
 
 on:
   pull_request:
