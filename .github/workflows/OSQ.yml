@@ -21,7 +21,7 @@ jobs:
       matrix:
         board:
           - 'feather_nrf52832'
-          - 'feather_nrf52840_express'
+          - 'feather_nrf52840'
           - 'arduino_nano_33_ble'
 
     steps:
@@ -33,7 +33,8 @@ jobs:
 
     - name: Checkout Code
       uses: actions/checkout@v1
-      with:
+      with: |
+        fetch-depth:1
         submodules: true
 
     - name: Install Toolchains
@@ -41,7 +42,6 @@ jobs:
         pip3 install adafruit-nrfutil uritemplate requests intelhex
         npm install --global xpm
         # 9.3.1-1.2.1 is xpack modified version which significantly increased compiled size to 6-7KB and cause flash overflow.
-        # Skip this version for now, we will try again with next official release from ARM
         xpm install --global @xpack-dev-tools/arm-none-eabi-gcc@9.3.1-1.1.1
         echo `echo $HOME/.local/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/*/.content/bin` >> $GITHUB_PATH
 

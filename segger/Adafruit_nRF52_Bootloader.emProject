@@ -317,7 +317,7 @@
     <configuration
       Name="Feather52840"
       c_preprocessor_definitions="NRF52840_XXAA;S140"
-      c_user_include_directories="../src/boards/feather_nrf52840_express"
+      c_user_include_directories="../src/boards/feather_nrf52840"
       gcc_optimization_level="Debug"
       linker_memory_map_file="nRF52840_xxAA_MemoryMap.xml" />
     <configuration
@@ -328,9 +328,9 @@
       linker_memory_map_file="nRF52832_xxAA_MemoryMap.xml" />
     <folder Name="src">
       <folder Name="boards">
-        <folder Name="feather_nrf52840_express">
-          <file file_name="../src/boards/feather_nrf52840_express/board.h" />
-          <file file_name="../src/boards/feather_nrf52840_express/pinconfig.c" />
+        <folder Name="feather_nrf52840">
+          <file file_name="../src/boards/feather_nrf52840/board.h" />
+          <file file_name="../src/boards/feather_nrf52840/pinconfig.c" />
         </folder>
         <file file_name="../src/boards/boards.c" />
         <file file_name="../src/boards/boards.h" />
