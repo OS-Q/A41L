@@ -1,12 +1,3 @@
-#------------------------------------------------------------------------------
-# CONFIGURE
-# - SDK_PATH   : path to SDK directory
-#
-# - SD_NAME    : e.g s132, s140
-# - SD_VERSION : SoftDevice version e.g 6.0.0
-# - SD_HEX     : to bootloader hex binary
-#------------------------------------------------------------------------------
-
 -include Makefile.user
 
 SDK_PATH     = lib/sdk/components
@@ -48,9 +39,9 @@ GDB     = $(CROSS_COMPILE)gdb
 
 # Set make directory command, Windows tries to create a directory named "-p" if that flag is there.
 ifneq ($(OS), Windows_NT)
-  MKDIR = mkdir -p
+	MKDIR = mkdir -p
 else
-  MKDIR = mkdir
+	MKDIR = mkdir
 endif
 
 RM = rm -rf
@@ -65,15 +56,15 @@ PYOCD ?= pyocd
 # Flasher will default to nrfjprog,
 # Check for pyocd, error on unexpected value.
 ifeq ($(FLASHER),nrfjprog)
-  FLASH_CMD = $(NRFJPROG) --program $1 --sectoranduicrerase -f nrf52 --reset
-  FLASH_NOUICR_CMD = $(NRFJPROG) --program $1 -f nrf52 --sectorerase --reset
-  FLASH_ERASE_CMD = $(NRFJPROG) -f nrf52 --eraseall
+	FLASH_CMD = $(NRFJPROG) --program $1 --sectoranduicrerase -f nrf52 --reset
+	FLASH_NOUICR_CMD = $(NRFJPROG) --program $1 -f nrf52 --sectorerase --reset
+	FLASH_ERASE_CMD = $(NRFJPROG) -f nrf52 --eraseall
 else ifeq ($(FLASHER),pyocd)
-  FLASH_CMD = $(PYOCD) flash -t $(MCU_SUB_VARIANT) $1
-  FLASH_NOUICR_CMD = $(PYOCD) flash -t $(MCU_SUB_VARIANT) $1
-  FLASH_ERASE_CMD = $(PYOCD) erase -t $(MCU_SUB_VARIANT) --chip
+	FLASH_CMD = $(PYOCD) flash -t $(MCU_SUB_VARIANT) $1
+	FLASH_NOUICR_CMD = $(PYOCD) flash -t $(MCU_SUB_VARIANT) $1
+	FLASH_ERASE_CMD = $(PYOCD) erase -t $(MCU_SUB_VARIANT) --chip
 else
-  $(error Unsupported flash utility: "$(FLASHER)")
+	$(error Unsupported flash utility: "$(FLASHER)")
 endif
 
 # auto-detect BMP on macOS, otherwise have to specify
@@ -87,9 +78,9 @@ GDB_BMP = $(GDB) -ex 'target extended-remote $(BMP_PORT)' -ex 'monitor swdp_scan
 BOARD_LIST = $(sort $(filter-out boards.h boards.c,$(notdir $(wildcard src/boards/*))))
 
 ifeq ($(filter $(BOARD),$(BOARD_LIST)),)
-  $(info You must provide a BOARD parameter with 'BOARD='. Supported boards are:)
-  $(foreach b,$(BOARD_LIST),$(info - $(b)))
-  $(error Invalid BOARD specified)
+	$(info You must provide a BOARD parameter with 'BOARD='. Supported boards are:)
+	$(foreach b,$(BOARD_LIST),$(info - $(b)))
+	$(error Invalid BOARD specified)
 endif
 
 # Build directory
@@ -101,19 +92,19 @@ BIN = _bin/$(BOARD)
 
 # MCU_SUB_VARIANT can be nrf52 (nrf52832), nrf52833, nrf52840
 ifeq ($(MCU_SUB_VARIANT),nrf52)
-  SD_NAME = s132
-  DFU_DEV_REV = 0xADAF
-  CFLAGS += -DNRF52 -DNRF52832_XXAA -DS132
+	SD_NAME = s132
+	DFU_DEV_REV = 0xADAF
+	CFLAGS += -DNRF52 -DNRF52832_XXAA -DS132
 else ifeq ($(MCU_SUB_VARIANT),nrf52833)
-  SD_NAME = s140
-  DFU_DEV_REV = 52840
-  CFLAGS += -DNRF52833_XXAA -DS140
+	SD_NAME = s140
+	DFU_DEV_REV = 52840
+	CFLAGS += -DNRF52833_XXAA -DS140
 else ifeq ($(MCU_SUB_VARIANT),nrf52840)
-  SD_NAME = s140
-  DFU_DEV_REV = 52840
-  CFLAGS += -DNRF52840_XXAA -DS140
+	SD_NAME = s140
+	DFU_DEV_REV = 52840
+	CFLAGS += -DNRF52840_XXAA -DS140
 else
-  $(error Sub Variant $(MCU_SUB_VARIANT) is unknown)
+	$(error Sub Variant $(MCU_SUB_VARIANT) is unknown)
 endif
 
 #------------------------------------------------------------------------------
@@ -235,10 +226,10 @@ IPATH += $(SD_PATH)/$(SD_FILENAME)_API/include/nrf52
 # Debug option use RTT for printf
 ifeq ($(DEBUG), 1)
 	RTT_SRC = lib/SEGGER_RTT
-	
+
 	CFLAGS += -DCFG_DEBUG -DSEGGER_RTT_MODE_DEFAULT=SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL
 	IPATH += $(RTT_SRC)/RTT
-  C_SRC += $(RTT_SRC)/RTT/SEGGER_RTT.c
+	C_SRC += $(RTT_SRC)/RTT/SEGGER_RTT.c
 endif
 
 #flags common to all targets
@@ -282,7 +273,7 @@ CFLAGS += -DCONFIG_GPIO_AS_PINRESET
 
 # Skip defining CONFIG_NFCT_PINS_AS_GPIOS if the device uses the NFCT.
 ifneq ($(USE_NFCT),yes)
-  CFLAGS += -DCONFIG_NFCT_PINS_AS_GPIOS
+	CFLAGS += -DCONFIG_NFCT_PINS_AS_GPIOS
 endif
 
 CFLAGS += -DSOFTDEVICE_PRESENT
@@ -338,8 +329,6 @@ INC_PATHS = $(addprefix -I,$(IPATH))
 # default target to build
 all: $(BUILD)/$(OUT_NAME).out $(BUILD)/$(OUT_NAME)_nosd.hex $(BUILD)/update-$(OUT_NAME)_nosd.uf2 $(BUILD)/$(MERGED_FILE).hex $(BUILD)/$(MERGED_FILE).zip
 
-# Print out the value of a make variable.
-# https://stackoverflow.com/questions/16467718/how-to-print-out-a-variable-in-makefile
 print-%:
 	@echo $* = $($*)
 
