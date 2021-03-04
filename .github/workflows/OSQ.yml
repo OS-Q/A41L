@@ -77,6 +77,6 @@ jobs:
       if: ${{ github.event_name == 'release' }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: _bin/${{ matrix.board }}/update-${{ matrix.board }}_bootloader-${{ github.event.release.tag_name }}_nosd.uf2
-        asset_name: update-${{ matrix.board }}_bootloader-${{ github.event.release.tag_name }}_nosd.uf2
+        asset_path: _bin/${{ matrix.board }}/${{ matrix.board }}_bootloader-${{ github.event.release.tag_name }}_nosd.uf2
+        asset_name: ${{ matrix.board }}_bootloader-${{ github.event.release.tag_name }}_nosd.uf2
         asset_content_type: application/x-binary
