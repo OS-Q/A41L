@@ -1,12 +1,17 @@
 name: Bootloader
 
 on:
-  pull_request:
   push:
-  repository_dispatch:
-  release:
-    types:
-      - created
+    branches:
+      - master
+      - github_actions
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - master
+      - github_actions
+
 
 jobs:
   build:
@@ -15,10 +20,8 @@ jobs:
       fail-fast: false
       matrix:
         board:
-          # Adafruit Boards
           - 'feather_nrf52832'
           - 'feather_nrf52840_express'
-          # Alphabetical order
           - 'arduino_nano_33_ble'
 
     steps:
@@ -29,7 +32,7 @@ jobs:
       uses: actions/setup-node@v1
 
     - name: Checkout Code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
         submodules: true
 
