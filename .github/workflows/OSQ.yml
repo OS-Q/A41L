@@ -48,7 +48,7 @@ jobs:
     - name: Build
       run: |
         make BOARD=${{ matrix.board }} all
-        make BOARD=${{ matrix.board }} copy-artifact
+        make BOARD=${{ matrix.board }} copy
 
     - uses: actions/upload-artifact@v2
       with:
