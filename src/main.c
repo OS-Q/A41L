@@ -425,8 +425,8 @@ uint32_t proc_soc(void)
     extern void tusb_hal_nrf_power_event(uint32_t event);
     /*------------- usb power event handler -------------*/
     int32_t usbevt = (soc_evt == NRF_EVT_POWER_USB_DETECTED   ) ? NRFX_POWER_USB_EVT_DETECTED:
-                    (soc_evt == NRF_EVT_POWER_USB_POWER_READY) ? NRFX_POWER_USB_EVT_READY   :
-                    (soc_evt == NRF_EVT_POWER_USB_REMOVED    ) ? NRFX_POWER_USB_EVT_REMOVED : -1;
+                     (soc_evt == NRF_EVT_POWER_USB_POWER_READY) ? NRFX_POWER_USB_EVT_READY   :
+                     (soc_evt == NRF_EVT_POWER_USB_REMOVED    ) ? NRFX_POWER_USB_EVT_REMOVED : -1;
 
     if ( usbevt >= 0) tusb_hal_nrf_power_event(usbevt);
 #endif
